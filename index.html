@@ -50,6 +50,21 @@
   #menu-toggle:checked ~ #mobile-nav {
     display: block;
   }
+  /* Desktop Dropdown Animations */
+  @keyframes dropdownFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .desktop-nav .group:hover > div[class*="absolute"] {
+    display: block;
+    animation: dropdownFadeIn 0.2s ease-out forwards;
+  }
+  /* Ensure nested dropdowns also animate */
+  .desktop-nav .group\/sub:hover > div[class*="absolute"],
+  .desktop-nav .group\/about:hover > div[class*="absolute"] {
+    display: block;
+    animation: dropdownFadeIn 0.2s ease-out forwards;
+  }
 </style>
 </head>
 
@@ -110,72 +125,187 @@
 </div>
     <!-- DESKTOP NAV -->
     <nav class="hidden md:flex items-center gap-8 font-medium relative desktop-nav">
+      <!-- HOME -->
       <a href="index.html" class="text-orange-500 border-b-2 border-orange-500 pb-1">Home</a>
-      <!-- ABOUT -->
-      <div class="group relative">
-        <button class="flex items-center gap-1">
-          About Us <i class="fa-solid fa-angle-down text-sm"></i>
-        </button>
-        <!-- bridge -->
-        <div class="absolute left-0 top-full w-full h-4"></div>
-        <div class="absolute left-0 top-full w-64 bg-white shadow-lg hidden group-hover:block">
-          <a href="snapticle-media-overview.html" class="block px-6 py-3 hover:bg-gray-100">Company Overview</a>
-          <a href="snapticle-media-team.html" class="block px-6 py-3 hover:bg-gray-100">Our Team</a>
-          <a href="snapticle-media-faq.html" class="block px-6 py-3 hover:bg-gray-100">FAQ</a>
-        </div>
-      </div>
+
       <!-- SERVICES -->
       <div class="group relative">
-        <button class="flex items-center gap-1 text-orange-500">
-          Services <i class="fa-solid fa-angle-down text-sm"></i>
+        <button class="flex items-center gap-1 font-medium hover:text-orange-500 transition-colors">
+          Services <svg class="w-3 h-3 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
         </button>
-        <!-- bridge -->
-        <div class="absolute left-0 top-full w-full h-4"></div>
+        <div class="absolute top-full left-0 h-4 w-full"></div>
         <!-- MAIN DROPDOWN -->
-        <div class="absolute left-0 top-full w-72 bg-white shadow-lg hidden group-hover:block">
-          <!-- DIGITAL MARKETING -->
+        <div class="absolute top-full left-0 hidden w-80 rounded-2xl bg-white shadow-2xl group-hover:block border border-gray-100">
+          <!-- Digital Marketing -->
           <div class="group/sub relative">
-            <div class="flex justify-between items-center px-6 py-3 hover:bg-gray-100 cursor-pointer">
-              Digital Marketing
-              <i class="fa-solid fa-angle-right text-sm"></i>
+            <div class="flex cursor-pointer items-center justify-between px-6 py-4 hover:bg-gray-50 border-b border-gray-50">
+              Digital Marketing <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
             </div>
-            <!-- bridge for submenu -->
-            <div class="absolute left-full top-0 w-4 h-full"></div>
-            <!-- SUB MENU -->
-            <div class="absolute left-full top-0 w-80 bg-white shadow-lg hidden group-hover/sub:block">
-              <a href="snapticle-media-seo.html" class="block px-6 py-3 hover:bg-gray-100">Search Engine Optimization</a>
-              <a href="snapticle-media-seo-link-building.html" class="block px-6 py-3 hover:bg-gray-100">SEO Link Building</a>
-              <a href="snapticle-media-marketing-analysis.html" class="block px-6 py-3 hover:bg-gray-100">Marketing Analysis</a>
-              <a href="snapticle-media-social-media-marketing.html" class="block px-6 py-3 hover:bg-gray-100">Social Media Marketing</a>
-              <a href="snapticle-media-email-marketing.html" class="block px-6 py-3 hover:bg-gray-100">Email Marketing</a>
-              <a href="snapticle-media-paid-ads.html" class="block px-6 py-3 hover:bg-gray-100">Paid Ads</a>
-              <a href="snapticle-media-content-writing.html" class="block px-6 py-3 hover:bg-gray-100">Content Writing</a>
+            <!-- Submenu bridge -->
+            <div class="absolute top-0 left-full w-4 h-full"></div>
+            <div class="absolute top-0 left-full hidden w-80 rounded-2xl bg-white shadow-2xl group-hover/sub:block overflow-hidden border border-gray-100">
+              <a href="#" class="block px-6 py-3 hover:bg-gray-50">Lead Generation</a>
+              <a href="#" class="block px-6 py-3 hover:bg-gray-50">Email Marketing</a>
+              <a href="#" class="block px-6 py-3 hover:bg-gray-50">Marketing Strategy</a>
+              <a href="#" class="block px-6 py-3 hover:bg-gray-50">Conversion Optimization</a>
             </div>
           </div>
-          <!-- OTHER ITEMS -->
-          <a href="snapticle-media-web-development.html" class="px-6 py-3 hover:bg-gray-100 cursor-pointer flex justify-between">
-            Web Development <i class="fa-solid fa-angle-right text-sm"></i>
-          </a>
-          <a href="snapticle-media-graphics-designing.html" class="px-6 py-3 hover:bg-gray-100 cursor-pointer flex justify-between">
-            Graphics Designing <i class="fa-solid fa-angle-right text-sm"></i>
-          </a>
-          <a href="snapticle-media-videos.html" class="px-6 py-3 hover:bg-gray-100 cursor-pointer flex justify-between">
-            Videos <i class="fa-solid fa-angle-right text-sm"></i>
-          </a>
+          <!-- Social Media Growth -->
+          <div class="group/sub relative">
+            <div class="flex cursor-pointer items-center justify-between px-6 py-4 hover:bg-gray-50 border-b border-gray-50">
+              Social Media Growth <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </div>
+            <div class="absolute top-0 left-full hidden w-80 rounded-2xl bg-white shadow-2xl group-hover/sub:block overflow-hidden border border-gray-100">
+              <a href="#" class="block px-6 py-3 hover:bg-gray-50">Social Media Management</a>
+              <a href="#" class="block px-6 py-3 hover:bg-gray-50">Reels Creation</a>
+              <a href="#" class="block px-6 py-3 hover:bg-gray-50">Post Designing</a>
+              <a href="#" class="block px-6 py-3 hover:bg-gray-50">Instagram Growth</a>
+              <a href="#" class="block px-6 py-3 hover:bg-gray-50">LinkedIn Branding</a>
+            </div>
+          </div>
+          <!-- Advertisements -->
+          <div class="group/sub relative">
+            <div class="flex cursor-pointer items-center justify-between px-6 py-4 hover:bg-gray-50 border-b border-gray-50">
+              Advertisements <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </div>
+            <div class="absolute top-0 left-full hidden w-80 rounded-2xl bg-white shadow-2xl group-hover/sub:block overflow-hidden border border-gray-100">
+              <a href="#" class="block px-6 py-3 hover:bg-gray-50">Meta Ads</a>
+              <a href="#" class="block px-6 py-3 hover:bg-gray-50">Facebook Ads</a>
+              <a href="#" class="block px-6 py-3 hover:bg-gray-50">Instagram Ads</a>
+              <a href="#" class="block px-6 py-3 hover:bg-gray-50">Google Ads</a>
+              <a href="#" class="block px-6 py-3 hover:bg-gray-50">YouTube Ads</a>
+              <a href="#" class="block px-6 py-3 hover:bg-gray-50">WhatsApp Marketing</a>
+            </div>
+          </div>
+          <!-- Website Services -->
+          <div class="group/sub relative">
+            <div class="flex cursor-pointer items-center justify-between px-6 py-4 hover:bg-gray-50 border-b border-gray-50">
+              Website Services <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </div>
+            <div class="absolute top-0 left-full hidden w-80 rounded-2xl bg-white shadow-2xl group-hover/sub:block overflow-hidden border border-gray-100">
+              <a href="#" class="block px-6 py-3 hover:bg-gray-50">Business Website</a>
+              <a href="#" class="block px-6 py-3 hover:bg-gray-50">eCommerce Website</a>
+              <a href="#" class="block px-6 py-3 hover:bg-gray-50">Landing Page Design</a>
+              <a href="#" class="block px-6 py-3 hover:bg-gray-50">Portfolio Website</a>
+              <a href="#" class="block px-6 py-3 hover:bg-gray-50">Website Maintenance</a>
+            </div>
+          </div>
+          <!-- Google & Business Listings -->
+          <div class="group/sub relative">
+            <div class="flex cursor-pointer items-center justify-between px-6 py-4 hover:bg-gray-50 border-b border-gray-50">
+              Google & Business Listings <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </div>
+            <div class="absolute top-0 left-full hidden w-80 rounded-2xl bg-white shadow-2xl group-hover/sub:block overflow-hidden border border-gray-100">
+              <a href="#" class="block px-6 py-3 hover:bg-gray-50">Google Business Profile</a>
+              <a href="#" class="block px-6 py-3 hover:bg-gray-50">Google Maps Ranking</a>
+              <a href="#" class="block px-6 py-3 hover:bg-gray-50">Google Reviews Management</a>
+              <a href="#" class="block px-6 py-3 hover:bg-gray-50">Meta Business Setup</a>
+              <a href="#" class="block px-6 py-3 hover:bg-gray-50">Justdial Listing</a>
+              <a href="#" class="block px-6 py-3 hover:bg-gray-50">IndiaMART Listing</a>
+            </div>
+          </div>
+          <!-- SEO & Rankings -->
+          <div class="group/sub relative">
+            <div class="flex cursor-pointer items-center justify-between px-6 py-4 hover:bg-gray-50 border-b border-gray-50">
+              SEO & Rankings <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </div>
+            <div class="absolute top-0 left-full hidden w-80 rounded-2xl bg-white shadow-2xl group-hover/sub:block overflow-hidden border border-gray-100">
+              <a href="#" class="block px-6 py-3 hover:bg-gray-50">Search Engine Optimization</a>
+              <a href="#" class="block px-6 py-3 hover:bg-gray-50">Local SEO</a>
+              <a href="#" class="block px-6 py-3 hover:bg-gray-50">Technical SEO</a>
+              <a href="#" class="block px-6 py-3 hover:bg-gray-50">Keyword Research</a>
+              <a href="#" class="block px-6 py-3 hover:bg-gray-50">SEO Audit</a>
+            </div>
+          </div>
+          <!-- Graphics Designing -->
+          <div class="group/sub relative">
+            <div class="flex cursor-pointer items-center justify-between px-6 py-4 hover:bg-gray-50">
+              Graphics Designing <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </div>
+            <div class="absolute top-0 left-full hidden w-80 rounded-2xl bg-white shadow-2xl group-hover/sub:block overflow-hidden border border-gray-100">
+              <a href="#" class="block px-6 py-3 hover:bg-gray-50">Logo Design</a>
+              <a href="#" class="block px-6 py-3 hover:bg-gray-50">Brand Identity</a>
+              <a href="#" class="block px-6 py-3 hover:bg-gray-50">Social Media Posts</a>
+              <a href="#" class="block px-6 py-3 hover:bg-gray-50">Banner Design</a>
+            </div>
+          </div>
         </div>
       </div>
-      <a href="snapticle-media-portfolio.html">Portfolio</a>
-      <a href="snapticle-media-blog.html">Blog</a>
-      <!-- CONTACT -->
+
+      <!-- PORTFOLIO -->
       <div class="group relative">
-        <button class="flex items-center gap-1">
-          Contact Us <i class="fa-solid fa-angle-down text-sm"></i>
+        <button class="flex items-center gap-1 font-medium hover:text-orange-500 transition-colors">
+          Portfolio <svg class="w-3 h-3 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
         </button>
-        <!-- bridge -->
-        <div class="absolute left-0 top-full w-full h-4"></div>
-        <div class="absolute left-0 top-full w-48 bg-white shadow-lg hidden group-hover:block">
-          <a href="snapticle-media-contact.html" class="block px-6 py-3 hover:bg-gray-100">Contact</a>
-          <a href="snapticle-media-support.html" class="block px-6 py-3 hover:bg-gray-100">Support</a>
+        <div class="absolute top-full left-0 h-4 w-full"></div>
+        <div class="absolute top-full left-0 hidden w-72 rounded-2xl bg-white shadow-2xl group-hover:block overflow-hidden border border-gray-100">
+          <a href="#" class="block px-6 py-4 hover:bg-gray-50 border-b border-gray-50">Website Projects</a>
+          <a href="#" class="block px-6 py-4 hover:bg-gray-50 border-b border-gray-50">Social Media Projects</a>
+          <a href="#" class="block px-6 py-4 hover:bg-gray-50 border-b border-gray-50">SEO Results</a>
+          <a href="#" class="block px-6 py-4 hover:bg-gray-50 border-b border-gray-50">Advertisement Campaigns</a>
+          <a href="#" class="block px-6 py-4 hover:bg-gray-50 border-b border-gray-50">Graphics Portfolio</a>
+          <a href="#" class="block px-6 py-4 hover:bg-gray-50 border-b border-gray-50">Video Editing Projects</a>
+          <a href="#" class="block px-6 py-4 hover:bg-gray-50 border-b border-gray-50">Branding Projects</a>
+          <a href="#" class="block px-6 py-4 hover:bg-gray-50">Google Business Growth</a>
+        </div>
+      </div>
+
+      <!-- BLOG -->
+      <div class="group relative">
+        <button class="flex items-center gap-1 font-medium hover:text-orange-500 transition-colors">
+          Blog <svg class="w-3 h-3 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </button>
+        <div class="absolute top-full left-0 h-4 w-full"></div>
+        <div class="absolute top-full left-0 hidden w-72 rounded-2xl bg-white shadow-2xl group-hover:block overflow-hidden border border-gray-100">
+          <a href="#" class="block px-6 py-4 hover:bg-gray-50 border-b border-gray-50">Industry News & Trends</a>
+          <a href="#" class="block px-6 py-4 hover:bg-gray-50 border-b border-gray-50">Business Growth Tips</a>
+          <a href="#" class="block px-6 py-4 hover:bg-gray-50 border-b border-gray-50">Marketing Ideas</a>
+          <a href="#" class="block px-6 py-4 hover:bg-gray-50 border-b border-gray-50">Social Media Tips</a>
+          <a href="#" class="block px-6 py-4 hover:bg-gray-50 border-b border-gray-50">SEO & Ranking Tips</a>
+          <a href="#" class="block px-6 py-4 hover:bg-gray-50 border-b border-gray-50">Ads Tips</a>
+          <a href="#" class="block px-6 py-4 hover:bg-gray-50 border-b border-gray-50">Website Tips</a>
+          <a href="#" class="block px-6 py-4 hover:bg-gray-50 border-b border-gray-50">AI Tools & Tips</a>
+          <a href="#" class="block px-6 py-4 hover:bg-gray-50">Case Studies</a>
+        </div>
+      </div>
+
+      <!-- ABOUT US -->
+      <div class="group relative">
+        <button class="flex items-center gap-1 font-medium hover:text-orange-500 transition-colors">
+          About Us <svg class="w-3 h-3 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </button>
+        <div class="absolute top-full right-0 h-4 w-full"></div>
+        <div class="absolute top-full right-0 mt-3 hidden w-72 bg-white shadow-2xl rounded-2xl group-hover:block border border-gray-100">
+          <div class="group/about relative">
+            <div class="flex cursor-pointer items-center justify-between px-6 py-4 hover:bg-gray-50 border-b border-gray-100">
+              Company Overview <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            </div>
+            <!-- Submenu bridge -->
+            <div class="absolute top-0 right-full w-8 h-full"></div>
+            <div class="absolute top-0 right-full hidden w-72 bg-white shadow-2xl rounded-2xl group-hover/about:block border border-gray-100">
+              <a href="snapticle-media-story.html" class="block px-6 py-4 hover:bg-gray-50 border-b border-gray-100">Our Story</a>
+              <a href="snapticle-media-mission.html" class="block px-6 py-4 hover:bg-gray-50 border-b border-gray-100">Mission & Vision</a>
+              <a href="snapticle-media-team.html" class="block px-6 py-4 hover:bg-gray-50">Meet The Team</a>
+            </div>
+          </div>
+          <a href="snapticle-media-why-us.html" class="block px-6 py-4 hover:bg-gray-50 border-b border-gray-100">Why Choose Us</a>
+          <a href="snapticle-media-testimonials.html" class="block px-6 py-4 hover:bg-gray-50 border-b border-gray-100">Client Testimonials</a>
+          <a href="snapticle-media-case-studies.html" class="block px-6 py-4 hover:bg-gray-50 border-b border-gray-100">Case Studies</a>
+          <a href="snapticle-media-awards.html" class="block px-6 py-4 hover:bg-gray-50 border-b border-gray-100">Awards</a>
+          <a href="snapticle-media-careers.html" class="block px-6 py-4 hover:bg-gray-50 border-b border-gray-100">Careers</a>
+          <a href="snapticle-media-faq.html" class="block px-6 py-4 hover:bg-gray-50">FAQ</a>
+        </div>
+      </div>
+
+      <!-- CONTACT US -->
+      <div class="group relative">
+        <button class="flex items-center gap-1 font-medium hover:text-orange-500 transition-colors">
+          Contact Us <svg class="w-3 h-3 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </button>
+        <div class="absolute top-full left-0 h-4 w-full"></div>
+        <div class="absolute top-full left-0 hidden w-48 bg-white shadow-2xl rounded-2xl group-hover:block overflow-hidden border border-gray-100">
+          <a href="snapticle-media-contact.html" class="block px-6 py-3 hover:bg-gray-50 border-b border-gray-50">Contact</a>
+          <a href="snapticle-media-support.html" class="block px-6 py-3 hover:bg-gray-50">Support</a>
         </div>
       </div>
     </nav>
@@ -186,40 +316,191 @@
     </label>
     <!-- MOBILE NAV -->
     <nav class="md:hidden absolute top-full left-0 w-full bg-white shadow-lg hidden mobile-nav" id="mobile-nav">
-      <a href="index.html" class="block px-6 py-3 text-orange-500 border-b border-gray-200">Home</a>
-      <!-- ABOUT -->
-      <div class="border-b border-gray-200">
-        <button class="flex justify-between items-center w-full px-6 py-3" onclick="toggleSubmenu('about')">
-          About Us <i class="fa-solid fa-angle-down text-sm"></i>
-        </button>
-        <div class="hidden" id="about-submenu">
-          <a href="snapticle-media-overview.html" class="block px-12 py-2 hover:bg-gray-100">Company Overview</a>
-          <a href="snapticle-media-team.html" class="block px-12 py-2 hover:bg-gray-100">Our Team</a>
-          <a href="snapticle-media-faq.html" class="block px-12 py-2 hover:bg-gray-100">FAQ</a>
+      <div class="flex flex-col bg-white">
+        <a href="index.html" class="block px-6 py-4 text-orange-500 border-b border-gray-100 font-bold">Home</a>
+        
+        <!-- SERVICES MOBILE -->
+        <div class="border-b border-gray-100">
+          <div class="flex justify-between items-center w-full px-6 py-4 text-slate-900 font-bold cursor-pointer" onclick="toggleSubmenu('services')">
+            <span>Services</span>
+            <svg class="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </div>
+          <div class="hidden bg-slate-50" id="services-submenu">
+            <!-- Digital Marketing Mobile -->
+            <div class="border-b border-slate-100">
+              <div class="flex justify-between items-center w-full px-10 py-3 text-slate-700 text-sm font-semibold cursor-pointer" onclick="toggleMobileSub('dm')">
+                <span>Digital Marketing</span>
+                <svg class="w-3 h-3 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </div>
+              <div class="hidden bg-white px-14 py-2 space-y-2 text-sm text-slate-600" id="dm-sub">
+                <a href="#" class="block py-1 border-b border-gray-50">Lead Generation</a>
+                <a href="#" class="block py-1 border-b border-gray-50">Email Marketing</a>
+                <a href="#" class="block py-1 border-b border-gray-50">Marketing Strategy</a>
+                <a href="#" class="block py-1">Conversion Optimization</a>
+              </div>
+            </div>
+            <!-- Social Media Growth Mobile -->
+            <div class="border-b border-slate-100">
+              <div class="flex justify-between items-center w-full px-10 py-3 text-slate-700 text-sm font-semibold cursor-pointer" onclick="toggleMobileSub('smg')">
+                <span>Social Media Growth</span>
+                <svg class="w-3 h-3 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </div>
+              <div class="hidden bg-white px-14 py-2 space-y-2 text-sm text-slate-600" id="smg-sub">
+                <a href="#" class="block py-1 border-b border-gray-50">Social Media Management</a>
+                <a href="#" class="block py-1 border-b border-gray-50">Reels Creation</a>
+                <a href="#" class="block py-1 border-b border-gray-50">Post Designing</a>
+                <a href="#" class="block py-1 border-b border-gray-50">Instagram Growth</a>
+                <a href="#" class="block py-1">LinkedIn Branding</a>
+              </div>
+            </div>
+            <!-- Advertisements Mobile -->
+            <div class="border-b border-slate-100">
+              <div class="flex justify-between items-center w-full px-10 py-3 text-slate-700 text-sm font-semibold cursor-pointer" onclick="toggleMobileSub('ads')">
+                <span>Advertisements</span>
+                <svg class="w-3 h-3 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </div>
+              <div class="hidden bg-white px-14 py-2 space-y-2 text-sm text-slate-600" id="ads-sub">
+                <a href="#" class="block py-1 border-b border-gray-50">Meta Ads</a>
+                <a href="#" class="block py-1 border-b border-gray-50">Facebook Ads</a>
+                <a href="#" class="block py-1 border-b border-gray-50">Instagram Ads</a>
+                <a href="#" class="block py-1 border-b border-gray-50">Google Ads</a>
+                <a href="#" class="block py-1 border-b border-gray-50">YouTube Ads</a>
+                <a href="#" class="block py-1">WhatsApp Marketing</a>
+              </div>
+            </div>
+            <!-- Website Services Mobile -->
+            <div class="border-b border-slate-100">
+              <div class="flex justify-between items-center w-full px-10 py-3 text-slate-700 text-sm font-semibold cursor-pointer" onclick="toggleMobileSub('web')">
+                <span>Website Services</span>
+                <svg class="w-3 h-3 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </div>
+              <div class="hidden bg-white px-14 py-2 space-y-2 text-sm text-slate-600" id="web-sub">
+                <a href="#" class="block py-1 border-b border-gray-50">Business Website</a>
+                <a href="#" class="block py-1 border-b border-gray-50">eCommerce Website</a>
+                <a href="#" class="block py-1 border-b border-gray-50">Landing Page Design</a>
+                <a href="#" class="block py-1 border-b border-gray-50">Portfolio Website</a>
+                <a href="#" class="block py-1">Website Maintenance</a>
+              </div>
+            </div>
+            <!-- Google & Business Mobile -->
+            <div class="border-b border-slate-100">
+              <div class="flex justify-between items-center w-full px-10 py-3 text-slate-700 text-sm font-semibold cursor-pointer" onclick="toggleMobileSub('google')">
+                <span>Google & Business Listings</span>
+                <svg class="w-3 h-3 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </div>
+              <div class="hidden bg-white px-14 py-2 space-y-2 text-sm text-slate-600" id="google-sub">
+                <a href="#" class="block py-1 border-b border-gray-50">Google Business Profile</a>
+                <a href="#" class="block py-1 border-b border-gray-50">Google Maps Ranking</a>
+                <a href="#" class="block py-1 border-b border-gray-50">Google Reviews Management</a>
+                <a href="#" class="block py-1 border-b border-gray-50">Meta Business Setup</a>
+                <a href="#" class="block py-1 border-b border-gray-50">Justdial Listing</a>
+                <a href="#" class="block py-1">IndiaMART Listing</a>
+              </div>
+            </div>
+            <!-- SEO Mobile -->
+            <div class="border-b border-slate-100">
+              <div class="flex justify-between items-center w-full px-10 py-3 text-slate-700 text-sm font-semibold cursor-pointer" onclick="toggleMobileSub('seo')">
+                <span>SEO & Rankings</span>
+                <svg class="w-3 h-3 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </div>
+              <div class="hidden bg-white px-14 py-2 space-y-2 text-sm text-slate-600" id="seo-sub">
+                <a href="#" class="block py-1 border-b border-gray-50">Search Engine Optimization</a>
+                <a href="#" class="block py-1 border-b border-gray-50">Local SEO</a>
+                <a href="#" class="block py-1 border-b border-gray-50">Technical SEO</a>
+                <a href="#" class="block py-1 border-b border-gray-50">Keyword Research</a>
+                <a href="#" class="block py-1">SEO Audit</a>
+              </div>
+            </div>
+            <!-- Graphics Mobile -->
+            <div>
+              <div class="flex justify-between items-center w-full px-10 py-3 text-slate-700 text-sm font-semibold cursor-pointer" onclick="toggleMobileSub('graphics')">
+                <span>Graphics Designing</span>
+                <svg class="w-3 h-3 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </div>
+              <div class="hidden bg-white px-14 py-2 space-y-2 text-sm text-slate-600" id="graphics-sub">
+                <a href="#" class="block py-1 border-b border-gray-50">Logo Design</a>
+                <a href="#" class="block py-1 border-b border-gray-50">Brand Identity</a>
+                <a href="#" class="block py-1 border-b border-gray-50">Social Media Posts</a>
+                <a href="#" class="block py-1">Banner Design</a>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <!-- SERVICES -->
-      <div class="border-b border-gray-200">
-        <button class="flex justify-between items-center w-full px-6 py-3 text-orange-500" onclick="toggleSubmenu('services')">
-          Services <i class="fa-solid fa-angle-down text-sm"></i>
-        </button>
-        <div class="hidden" id="services-submenu">
-          <a href="snapticle-media-digital-marketing.html" class="block px-12 py-2 hover:bg-gray-100">Digital Marketing</a>
-          <a href="snapticle-media-web-development.html" class="block px-12 py-2 hover:bg-gray-100">Web Development</a>
-          <a href="snapticle-media-graphics-designing.html" class="block px-12 py-2 hover:bg-gray-100">Graphics Designing</a>
-          <a href="snapticle-media-videos.html" class="block px-12 py-2 hover:bg-gray-100">Videos</a>
+
+        <!-- PORTFOLIO MOBILE -->
+        <div class="border-b border-gray-100">
+          <div class="flex justify-between items-center w-full px-6 py-4 text-slate-900 font-bold cursor-pointer" onclick="toggleSubmenu('portfolio')">
+            <span>Portfolio</span>
+            <svg class="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </div>
+          <div class="hidden bg-slate-50 px-10 py-2 space-y-2 text-sm text-slate-700" id="portfolio-submenu">
+            <a href="#" class="block py-2 border-b border-gray-100">Website Projects</a>
+            <a href="#" class="block py-2 border-b border-gray-100">Social Media Projects</a>
+            <a href="#" class="block py-2 border-b border-gray-100">SEO Results</a>
+            <a href="#" class="block py-2 border-b border-gray-100">Advertisement Campaigns</a>
+            <a href="#" class="block py-2 border-b border-gray-100">Graphics Portfolio</a>
+            <a href="#" class="block py-2 border-b border-gray-100">Video Editing Projects</a>
+            <a href="#" class="block py-2 border-b border-gray-100">Branding Projects</a>
+            <a href="#" class="block py-2">Google Business Growth</a>
+          </div>
         </div>
-      </div>
-      <a href="snapticle-media-portfolio.html" class="block px-6 py-3 border-b border-gray-200">Portfolio</a>
-      <a href="snapticle-media-blog.html" class="block px-6 py-3 border-b border-gray-200">Blog</a>
-      <!-- CONTACT -->
-      <div>
-        <button class="flex justify-between items-center w-full px-6 py-3" onclick="toggleSubmenu('contact')">
-          Contact Us <i class="fa-solid fa-angle-down text-sm"></i>
-        </button>
-        <div class="hidden" id="contact-submenu">
-          <a href="snapticle-media-contact.html" class="block px-12 py-2 hover:bg-gray-100">Contact</a>
-          <a href="snapticle-media-support.html" class="block px-12 py-2 hover:bg-gray-100">Support</a>
+
+        <!-- BLOG MOBILE -->
+        <div class="border-b border-gray-100">
+          <div class="flex justify-between items-center w-full px-6 py-4 text-slate-900 font-bold cursor-pointer" onclick="toggleSubmenu('blog')">
+            <span>Blog</span>
+            <svg class="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </div>
+          <div class="hidden bg-slate-50 px-10 py-2 space-y-2 text-sm text-slate-700" id="blog-submenu">
+            <a href="#" class="block py-2 border-b border-gray-100">Industry News & Trends</a>
+            <a href="#" class="block py-2 border-b border-gray-100">Business Growth Tips</a>
+            <a href="#" class="block py-2 border-b border-gray-100">Marketing Ideas</a>
+            <a href="#" class="block py-2 border-b border-gray-100">Social Media Tips</a>
+            <a href="#" class="block py-2 border-b border-gray-100">SEO & Ranking Tips</a>
+            <a href="#" class="block py-2 border-b border-gray-100">Ads Tips</a>
+            <a href="#" class="block py-2 border-b border-gray-100">Website Tips</a>
+            <a href="#" class="block py-2 border-b border-gray-100">AI Tools & Tips</a>
+            <a href="#" class="block py-2">Case Studies</a>
+          </div>
+        </div>
+
+        <!-- ABOUT US MOBILE -->
+        <div class="border-b border-gray-100">
+          <div class="flex justify-between items-center w-full px-6 py-4 text-slate-900 font-bold cursor-pointer" onclick="toggleSubmenu('about')">
+            <span>About Us</span>
+            <svg class="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </div>
+          <div class="hidden bg-slate-50" id="about-submenu">
+            <div class="border-b border-slate-100">
+              <div class="flex justify-between items-center w-full px-10 py-3 text-slate-700 text-sm font-semibold cursor-pointer" onclick="toggleMobileSub('overview')">
+                <span>Company Overview</span>
+                <svg class="w-3 h-3 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </div>
+              <div class="hidden bg-white px-14 py-2 space-y-2 text-sm text-slate-600" id="overview-sub">
+                <a href="snapticle-media-story.html" class="block py-1 border-b border-gray-50">Our Story</a>
+                <a href="snapticle-media-mission.html" class="block py-1 border-b border-gray-50">Mission & Vision</a>
+                <a href="snapticle-media-team.html" class="block py-1">Meet The Team</a>
+              </div>
+            </div>
+            <a href="snapticle-media-why-us.html" class="block px-10 py-3 text-slate-700 text-sm font-semibold border-b border-slate-100">Why Choose Us</a>
+            <a href="snapticle-media-testimonials.html" class="block px-10 py-3 text-slate-700 text-sm font-semibold border-b border-slate-100">Client Testimonials</a>
+            <a href="snapticle-media-case-studies.html" class="block px-10 py-3 text-slate-700 text-sm font-semibold border-b border-slate-100">Case Studies</a>
+            <a href="snapticle-media-awards.html" class="block px-10 py-3 text-slate-700 text-sm font-semibold border-b border-slate-100">Awards</a>
+            <a href="snapticle-media-careers.html" class="block px-10 py-3 text-slate-700 text-sm font-semibold border-b border-slate-100">Careers</a>
+            <a href="snapticle-media-faq.html" class="block px-10 py-3 text-slate-700 text-sm font-semibold">FAQ</a>
+          </div>
+        </div>
+
+        <!-- CONTACT US MOBILE -->
+        <div class="border-b border-gray-100">
+          <div class="flex justify-between items-center w-full px-6 py-4 text-slate-900 font-bold cursor-pointer" onclick="toggleSubmenu('contact')">
+            <span>Contact Us</span>
+            <svg class="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </div>
+          <div class="hidden bg-slate-50 px-10 py-2 space-y-2 text-sm text-slate-700" id="contact-submenu">
+            <a href="snapticle-media-contact.html" class="block py-2 border-b border-gray-100">Contact</a>
+            <a href="snapticle-media-support.html" class="block py-2">Support</a>
+          </div>
         </div>
       </div>
     </nav>
@@ -1794,16 +2075,54 @@
 <!-- JS -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-  // Mobile Nav Dropdown Toggle
+  // Mobile Nav Dropdown Toggle (Accordion style: close others when one opens)
   window.toggleSubmenu = function(id) {
     const submenu = document.getElementById(id + '-submenu');
-    if (submenu) {
-      submenu.classList.toggle('hidden');
-      const icon = submenu.previousElementSibling.querySelector('i');
-      if (icon) {
-        icon.classList.toggle('fa-angle-down');
-        icon.classList.toggle('fa-angle-up');
+    if (!submenu) return;
+
+    const isHidden = submenu.classList.contains('hidden');
+    
+    // Close all top-level mobile submenus first
+    document.querySelectorAll('[id$="-submenu"]').forEach(sub => {
+      if (!sub.classList.contains('hidden')) {
+        sub.classList.add('hidden');
+        const icon = sub.previousElementSibling?.querySelector('svg');
+        if (icon) icon.classList.remove('rotate-180');
       }
+    });
+
+    // If it was hidden, open it now
+    if (isHidden) {
+      submenu.classList.remove('hidden');
+      const icon = submenu.previousElementSibling?.querySelector('svg');
+      if (icon) icon.classList.add('rotate-180');
+    }
+  };
+
+  // Mobile Nested Submenu Toggle (Accordion style for sub-items)
+  window.toggleMobileSub = function(id) {
+    const sub = document.getElementById(id + '-sub');
+    if (!sub) return;
+
+    const isHidden = sub.classList.contains('hidden');
+
+    // Close all other sub-items within the same parent submenu
+    const parentMenu = sub.closest('[id$="-submenu"]');
+    if (parentMenu) {
+      parentMenu.querySelectorAll('[id$="-sub"]').forEach(otherSub => {
+        if (otherSub !== sub && !otherSub.classList.contains('hidden')) {
+          otherSub.classList.add('hidden');
+          const icon = otherSub.previousElementSibling?.querySelector('svg');
+          if (icon) icon.classList.remove('rotate-180');
+        }
+      });
+    }
+
+    // If it was hidden, open it
+    if (isHidden) {
+      sub.classList.remove('hidden');
+      const icon = sub.previousElementSibling?.querySelector('svg');
+      if (icon) icon.classList.add('rotate-180');
     }
   };
 
