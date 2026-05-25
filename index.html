@@ -2199,29 +2199,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const statsSection = document.getElementById("stats");
   if (statsSection) observer.observe(statsSection);
 
-  // SEO Form Logic
-  const scriptURL = "https://script.google.com/macros/s/AKfycbzIqHSsaYZsMEn14AyNFe_GOlTN-4tPavbomsRKGGlSS7fqtJSm4gEwNSSKoaHgJWg6ow/exec";
-  const form = document.getElementById("seoForm");
-  const successMsg = document.getElementById("successMsg");
-
-  if (form) {
-    form.addEventListener("submit", e => {
-      e.preventDefault();
-      const formData = new FormData(form);
-      fetch(scriptURL, {
-        method: "POST",
-        body: formData
-      })
-      .then(() => {
-        if (successMsg) successMsg.classList.remove("hidden");
-        form.reset();
-      })
-      .catch(error => {
-        console.error(error);
-        alert("Form submission error. Please try again.");
-      });
-    });
-  }
 
   // FAQ functionality
   const faqs = document.querySelectorAll(".faq-item");
